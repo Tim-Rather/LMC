@@ -1,4 +1,5 @@
-﻿using StarterProj.Models.Request;
+﻿using StarterProj.Models.Domain;
+using StarterProj.Models.Request;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,8 +40,45 @@ namespace StarterProj.Services
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    //explicitly casting int with (int) in front of cmd bc we know an int is being returned from SQL
+                    //explicitly casting int with (int) in front of cmd bc know an int is being returned from SQL
                     result = (int)cmd.Parameters["@Id"].Value;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public List<People> GetAll()
+        {
+            List<People> result = new List<People>();
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string cmdText = "People_SelectAll";
+                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = cmdText;
+
+                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                    conn.Open();
+                    while (reader.Read())
+                    {
+                        People person = new People();
+                        int index = 0;
+                        person.Id = reader.GetInt32(index++);
+                        person.FirstName = reader.GetString(index++);
+                        if (!reader.IsDBNull(index))
+                            person.MiddleInitial = reader.GetString(index++)[0];
+                        else
+                            index++;
+                        person.LastName = reader.GetString(index++);
+                        person.DOB = reader.GetDateTime(index++);
+                        person.CreatedDate = reader.GetDateTime(index++);
+                        person.ModifiedDate = reader.GetDateTime(index++);
+                        person.ModifiedBy = reader.GetString(index++);
+
+                        result.Add(person);
+                    }
                     conn.Close();
                 }
             }

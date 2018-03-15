@@ -24,7 +24,7 @@ namespace StarterProj.Services
                 using(SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = cmdText;
+                    //cmd.CommandText = cmdText;
 
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@Id";
@@ -57,10 +57,10 @@ namespace StarterProj.Services
                 using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = cmdText;
+                    //cmd.CommandText = cmdText;
 
-                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
                     conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
                     while (reader.Read())
                     {
                         People person = new People();
@@ -83,6 +83,85 @@ namespace StarterProj.Services
                 }
             }
             return result;
+        }
+
+        public People GetById(int id)
+        {
+            People person = new People();
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string cmdText = "People_SelectById";
+                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    //cmd.CommandText = cmdText;
+
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                    while(reader.Read())
+                    {
+                        int index = 0;
+                        person.Id = reader.GetInt32(index++);
+                        person.FirstName = reader.GetString(index++);
+                        if (!reader.IsDBNull(index))
+                            index++;
+                        else
+                            person.MiddleInitial = reader.GetString(index++)[0];
+                        person.LastName = reader.GetString(index++);
+                        person.DOB = reader.GetDateTime(index++);
+                        person.CreatedDate = reader.GetDateTime(index++);
+                        person.ModifiedDate = reader.GetDateTime(index++);
+                        person.ModifiedBy = reader.GetString(index++);
+                    }
+
+                    conn.Close();
+                }
+            }
+            return person;
+        }
+
+        public void Update(PeopleUpdateRequest model)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string cmdText = "People_Update";
+                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Id", model.Id);
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", model.LastName);
+                    cmd.Parameters.AddWithValue("@DOB", model.DOB);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string cmdText = "People_Delete";
+                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
         }
     }
 }

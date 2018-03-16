@@ -7,7 +7,7 @@ namespace StarterProj.Models.Request
     {
         [Required, MaxLength(50)]
         public string FirstName { get; set; }
-        public char MiddleInitial { get; set; }
+        public char? MiddleInitial { get; set; }
         [Required, MaxLength(50)]
         public string LastName { get; set; }
         [Required]

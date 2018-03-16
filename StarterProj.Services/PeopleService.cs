@@ -12,8 +12,7 @@ namespace StarterProj.Services
 {
     public class PeopleService
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
+        private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public int Insert(PeopleAddRequest model)
         {
             int result = 0;
@@ -24,7 +23,6 @@ namespace StarterProj.Services
                 using(SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.CommandText = cmdText;
 
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@Id";
@@ -57,7 +55,6 @@ namespace StarterProj.Services
                 using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.CommandText = cmdText;
 
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
@@ -94,7 +91,6 @@ namespace StarterProj.Services
                 using(SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.CommandText = cmdText;
 
                     cmd.Parameters.AddWithValue("@Id", id);
 
@@ -106,8 +102,11 @@ namespace StarterProj.Services
                         int index = 0;
                         person.Id = reader.GetInt32(index++);
                         person.FirstName = reader.GetString(index++);
-                        if (!reader.IsDBNull(index))
+                        if (reader.IsDBNull(index))
+                        {
+                            person.MiddleInitial = null;
                             index++;
+                        }
                         else
                             person.MiddleInitial = reader.GetString(index++)[0];
                         person.LastName = reader.GetString(index++);
@@ -116,7 +115,6 @@ namespace StarterProj.Services
                         person.ModifiedDate = reader.GetDateTime(index++);
                         person.ModifiedBy = reader.GetString(index++);
                     }
-
                     conn.Close();
                 }
             }

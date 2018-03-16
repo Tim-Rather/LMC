@@ -14,6 +14,7 @@ namespace StarterProj.Web.Controllers.Api
     [RoutePrefix("api/people")]
     public class PeopleController : ApiController
     {
+        protected PeopleService svc = new PeopleService();
         // GET GetAll
         [Route("getall"), HttpGet]
         public HttpResponseMessage Get()
@@ -21,7 +22,6 @@ namespace StarterProj.Web.Controllers.Api
             try
             {
                 ItemListResponse<People> response = new ItemListResponse<People>();
-                PeopleService svc = new PeopleService();
                 response.Items = svc.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
@@ -37,7 +37,6 @@ namespace StarterProj.Web.Controllers.Api
         {
             try
             {
-                PeopleService svc = new PeopleService();
                 ItemResponse<People> response = new ItemResponse<People>();
                 response.Item = svc.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
@@ -60,7 +59,6 @@ namespace StarterProj.Web.Controllers.Api
                     //placeholder before authenticaction in place
                     model.ModifiedBy = "me";
 
-                    PeopleService svc = new PeopleService();
                     ItemResponse<int> response = new ItemResponse<int>();
                     response.Item = svc.Insert(model);
                     return Request.CreateResponse(HttpStatusCode.OK, response);
@@ -88,7 +86,6 @@ namespace StarterProj.Web.Controllers.Api
                     //placeholder before authentication in place
                     model.ModifiedBy = "me";
 
-                    PeopleService svc = new PeopleService();
                     SuccessResponse response = new SuccessResponse();
                     svc.Update(model);
                     return Request.CreateResponse(HttpStatusCode.OK, response);
@@ -109,14 +106,12 @@ namespace StarterProj.Web.Controllers.Api
         {
             try
             {
-                PeopleService svc = new PeopleService();
                 svc.Delete(id);
                 SuccessResponse response = new SuccessResponse();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
-
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }

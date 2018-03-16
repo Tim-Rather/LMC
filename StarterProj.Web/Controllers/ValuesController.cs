@@ -5,8 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace StarterProj.Web.Controllers
+namespace Web.Controllers
 {
+    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values

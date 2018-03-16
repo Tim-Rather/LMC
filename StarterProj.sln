@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterProj.Models", "Start
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterProj.UnitTests", "StarterProj.UnitTests\StarterProj.UnitTests.csproj", "{E4BA5C00-B7D2-4734-9688-D2596BB572DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterProj.Web", "Web\StarterProj.Web.csproj", "{13B103C5-FE91-4F31-BF01-00BC50194E54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterProj.Web", "StarterProj.Web\StarterProj.Web.csproj", "{13B103C5-FE91-4F31-BF01-00BC50194E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,11 +14,11 @@ onClick={props.createTask}
  */
 const TaskIndex = props => {
 
-    let rows = props.tasks.map((task, index) => 
+    let rows = props.tasks.map(task => 
         <TaskCard  
             task={task}
             {...task}
-            key={index}
+            key={task.id}
             editTask={props.editTask}
             deleteTask={props.deleteTask}
         />

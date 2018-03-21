@@ -10,11 +10,28 @@ class TaskManager extends Component {
             task: {
                 title: '',
                 description: '',
-                date: '',
-                id: 0
+                date: ''
             }
         }
     }
+
+    componentDidMount(){
+        this.getTasks();
+    }
+
+    getTasks = () => {
+        let tasks = [];
+        axios.get('/api/tasks/getbyid/2')
+        .then(resp => {
+            console.log(resp);
+            console.log(resp.data.items);
+            this.setState({
+                taskList: resp.data.items
+            })
+        }, err => console.error(err))
+    }
+
+
 
     /***Event Handlers***/
     handleInputChange = e => {
@@ -32,24 +49,41 @@ class TaskManager extends Component {
     handleSubmit = () => {
         let newTaskList = this.state.taskList;
         let task = this.state.task;
-        newTaskList.push(task);
+        let date = new Date(task.date).toISOString()
+        task.date = date;
+        console.log(task.date);
+        task.accountId = 2;
+        if (task.id == undefined) {
+            return axios.post('/api/tasks', task)
+            .then(resp => console.log(resp), err => console.log(err))
+        }
+        axios.put('/api/tasks', task)
+        .then(resp => console.log(resp), err => console.log(err))
         this.setState({
-            taskList: newTaskList,
             task: {
                 title: '',
                 description: '',
-                date: '',
-                id: 0
+                date: ''
             }
         })
     }
 
     handleEdit = id => {
+        let tasks = this.state.taskList;
+        let index = tasks.findIndex(task => task.id == id);
+        let editTask = tasks[index];
 
+        this.setState({
+            task: editTask
+        })
     }
 
     handleDelete = id => {
-        
+        axios.delete('/api/tasks/' + id)
+        .then(resp => {
+            console.log(resp)
+            this.getTasks();
+            }, err => console.log(err))
     }
 
     render() {

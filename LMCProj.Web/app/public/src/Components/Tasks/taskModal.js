@@ -43,7 +43,7 @@ const TaskModal = props => {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onClick={props.submitTask} className="btn btn-primary">Submit Task</button>
+                        <button type="button" onClick={props.submitTask}  data-toggle="modal" data-target="#taskModal" className="btn btn-primary">Submit Task</button>
                     </div>
                 </div>
             </div>

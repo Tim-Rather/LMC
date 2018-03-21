@@ -25,7 +25,7 @@ const TaskCard = props => {
     let currentUTCDate = currentDate + UTCDiff;
 
     let taskDate = Date.parse(props.date);
-    let timeToTask = taskDate - currentDate;
+    let timeToTask = taskDate - currentUTCDate;
     let weeksToTask = Math.floor(timeToTask/(1000*60*60*24*7));
     let daysToTask = Math.floor(timeToTask/(1000*60*60*24));
     let hoursToTask = Math.floor(timeToTask/(1000*60*60));
@@ -41,7 +41,7 @@ const TaskCard = props => {
     } else if (hoursToTask <= 23) {
         displayDate = "In " + hoursToTask + " hours"
     }
-    console.log(displayDate);
+    // console.log(displayDate);
     // console.log(hoursToTask);
     // console.log(daysToTask);
     // console.log(weeksToTask);
@@ -52,8 +52,8 @@ const TaskCard = props => {
 
 
     return (
-        <div >
-            <div className="card mb-4 box-shadow">
+        <div className="col-md-4">
+            <div className="card mb-3 h-99 box-shadow">
                 <div className="card-header">
                     <h5 >
                         {task.title}
@@ -73,10 +73,10 @@ const TaskCard = props => {
                         {displayDate}
                     </div>
                 </div>
-                <div className="card-footer text-muted">
-                    <div className="w-66 text-right">
+                <div className="card-footer">
+                    <div className="w-100">
                         <button className="btn btn-outline-info btn-sm mr-5 text-left" data-toggle="modal" data-target="#taskModal" onClick={() => props.editTask(task.id)}>Edit Task</button>
-                        <button className="btn btn-outline-danger btn-sm" onClick={() => props.deleteTask(task.id)}>Delete Task</button>
+                        <button className="btn btn-outline-danger btn-sm ml-5 text-right" onClick={() => props.deleteTask(task.id)}>Delete Task</button>
                     </div>
                 </div>
             </div>

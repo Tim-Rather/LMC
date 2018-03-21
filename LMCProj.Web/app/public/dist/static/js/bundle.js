@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5c27d0a407cd217a3e00"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "947f10be7f47bad60354"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -32599,7 +32599,7 @@ var TaskCard = function TaskCard(props) {
     var currentUTCDate = currentDate + UTCDiff;
 
     var taskDate = Date.parse(props.date);
-    var timeToTask = taskDate - currentDate;
+    var timeToTask = taskDate - currentUTCDate;
     var weeksToTask = Math.floor(timeToTask / (1000 * 60 * 60 * 24 * 7));
     var daysToTask = Math.floor(timeToTask / (1000 * 60 * 60 * 24));
     var hoursToTask = Math.floor(timeToTask / (1000 * 60 * 60));
@@ -32615,7 +32615,7 @@ var TaskCard = function TaskCard(props) {
     } else if (hoursToTask <= 23) {
         displayDate = "In " + hoursToTask + " hours";
     }
-    console.log(displayDate);
+    // console.log(displayDate);
     // console.log(hoursToTask);
     // console.log(daysToTask);
     // console.log(weeksToTask);
@@ -32627,8 +32627,7 @@ var TaskCard = function TaskCard(props) {
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        {
-            __source: {
+        { className: 'col-md-4', __source: {
                 fileName: _jsxFileName,
                 lineNumber: 55
             },
@@ -32636,7 +32635,7 @@ var TaskCard = function TaskCard(props) {
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'card mb-4 box-shadow', __source: {
+            { className: 'card mb-3 h-99 box-shadow', __source: {
                     fileName: _jsxFileName,
                     lineNumber: 56
                 },
@@ -32713,7 +32712,7 @@ var TaskCard = function TaskCard(props) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'card-footer text-muted', __source: {
+                { className: 'card-footer', __source: {
                         fileName: _jsxFileName,
                         lineNumber: 76
                     },
@@ -32721,7 +32720,7 @@ var TaskCard = function TaskCard(props) {
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'w-66 text-right', __source: {
+                    { className: 'w-100', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 77
                         },
@@ -32741,7 +32740,7 @@ var TaskCard = function TaskCard(props) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { className: 'btn btn-outline-danger btn-sm', onClick: function onClick() {
+                        { className: 'btn btn-outline-danger btn-sm ml-5 text-right', onClick: function onClick() {
                                 return props.deleteTask(task.id);
                             }, __source: {
                                 fileName: _jsxFileName,
@@ -32856,17 +32855,27 @@ var TaskIndex = function TaskIndex(props) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'card-deck mb-3 text-center', __source: {
+            {
+                __source: {
                     fileName: _jsxFileName,
                     lineNumber: 35
                 },
                 __self: _this
             },
-            rows
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'card-deck mb-3 text-center', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 36
+                    },
+                    __self: _this
+                },
+                rows
+            )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__taskModal__["a" /* default */], { task: props.task, handleInputChange: props.handleInputChange, submitTask: props.submitTask, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 38
+                lineNumber: 40
             },
             __self: _this
         })
@@ -33263,13 +33272,15 @@ var TaskManager = function (_Component) {
             task.accountId = 2;
             if (task.id == undefined) {
                 return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/api/tasks', task).then(function (resp) {
-                    return console.log(resp);
+                    console.log(resp);
+                    _this.getTasks();
                 }, function (err) {
                     return console.log(err);
                 });
             }
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.put('/api/tasks', task).then(function (resp) {
-                return console.log(resp);
+                console.log(resp);
+                _this.getTasks();
             }, function (err) {
                 return console.log(err);
             });
@@ -33280,7 +33291,6 @@ var TaskManager = function (_Component) {
                     date: ''
                 }
             });
-            _this.getTasks();
         };
 
         _this.handleEdit = function (id) {
@@ -33331,7 +33341,7 @@ var TaskManager = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 90
+                        lineNumber: 98
                     },
                     __self: this
                 },
@@ -33343,7 +33353,7 @@ var TaskManager = function (_Component) {
                     editTask: this.handleEdit,
                     deleteTask: this.handleDelete, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 91
+                        lineNumber: 99
                     },
                     __self: this
                 })

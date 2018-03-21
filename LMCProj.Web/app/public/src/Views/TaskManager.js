@@ -53,10 +53,17 @@ class TaskManager extends Component {
         task.accountId = 2;
         if (task.id == undefined) {
             return axios.post('/api/tasks', task)
-            .then(resp => console.log(resp), err => console.log(err))
+            .then(resp => {
+                console.log(resp)
+                this.getTasks();
+            }, err => console.log(err))
         }
         axios.put('/api/tasks', task)
-        .then(resp => console.log(resp), err => console.log(err))
+        .then(resp => {
+            console.log(resp)
+            this.getTasks() }, 
+            err => console.log(err)
+        )
         this.setState({
             task: {
                 title: '',
@@ -64,7 +71,6 @@ class TaskManager extends Component {
                 date: ''
             }
         })
-        this.getTasks();
     }
 
     handleEdit = id => {
@@ -82,7 +88,9 @@ class TaskManager extends Component {
         .then(resp => {
             console.log(resp)
             this.getTasks();
-            }, err => console.log(err))
+            }, 
+            err => console.log(err)
+        )
     }
 
     render() {

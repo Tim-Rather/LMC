@@ -1,39 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Test from './Views/Test';
+import Home from './Views/Home';
+import TaskManager from './Views/TaskManager';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const BasicExample = () => (
+const App = () => (
   <Router>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
-      </ul>
-
-      <hr />
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2 mb-3">
+        <span className="navbar-brand mb-0 h1">LMC</span>
+        <div className="navbar-nav">
+          <li>
+            <Link className="nav-item nav-link" to="/">Home</Link>
+          </li>
+          <li>
+            <Link className="nav-item nav-link" to="/taskmanager">Task Manager</Link>
+          </li>
+            <Link className="nav-item nav-link" to="/about">About</Link>
+          <li>
+            <Link className="nav-item nav-link" to="/test">Test</Link>
+          </li>
+        </div>
+      </nav>
 
       <Route exact path="/" component={Home} />
+      <Route path="/taskmanager" component={TaskManager} />
       <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
+      <Route path="/test" component={Test} />
     </div>
   </Router>
 );
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+// const Home = () => (
+//   <div>
+//     <h2>Home</h2>
+//   </div>
+// );
 
 const About = () => (
   <div>
@@ -71,4 +74,4 @@ const Topic = ({ match }) => (
   </div>
 );
 
-export default BasicExample;
+export default App;

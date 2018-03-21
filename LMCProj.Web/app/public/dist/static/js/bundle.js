@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bca994908d0b4072a58a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5c27d0a407cd217a3e00"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -32589,13 +32589,48 @@ var TaskCard = function TaskCard(props) {
 
     var task = props.task;
     var date = props.date.substring(0, 10);
-    // let time = props.date.substring(11, 22);
+    var time = props.date.substring(11, 22);
+
+    var currentDate = Date.now();
+    var UTCDiff = new Date().getTimezoneOffset();
+    //converting UTCDiff to milliseconds
+    UTCDiff = UTCDiff * 60000;
+    console.log(UTCDiff);
+    var currentUTCDate = currentDate + UTCDiff;
+
+    var taskDate = Date.parse(props.date);
+    var timeToTask = taskDate - currentDate;
+    var weeksToTask = Math.floor(timeToTask / (1000 * 60 * 60 * 24 * 7));
+    var daysToTask = Math.floor(timeToTask / (1000 * 60 * 60 * 24));
+    var hoursToTask = Math.floor(timeToTask / (1000 * 60 * 60));
+    var displayDate = 0;
+    if (weeksToTask >= 1) {
+        displayDate = "In " + weeksToTask + " weeks";
+    } else if (daysToTask <= 6 && daysToTask >= 1) {
+        if (daysToTask === 1) {
+            displayDate = "In " + daysToTask + " day";
+        } else {
+            displayDate = "In " + daysToTask + " days";
+        }
+    } else if (hoursToTask <= 23) {
+        displayDate = "In " + hoursToTask + " hours";
+    }
+    console.log(displayDate);
+    // console.log(hoursToTask);
+    // console.log(daysToTask);
+    // console.log(weeksToTask);
+    // console.log(timeToTask);
+    // console.log("Task Date: " + taskDate);
+    // console.log("Current Date: " + currentDate);
+    // console.log(taskDate - currentUTCDate);
+
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'col-md-4', __source: {
+        {
+            __source: {
                 fileName: _jsxFileName,
-                lineNumber: 21
+                lineNumber: 55
             },
             __self: _this
         },
@@ -32603,7 +32638,7 @@ var TaskCard = function TaskCard(props) {
             'div',
             { className: 'card mb-4 box-shadow', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 22
+                    lineNumber: 56
                 },
                 __self: _this
             },
@@ -32611,7 +32646,7 @@ var TaskCard = function TaskCard(props) {
                 'div',
                 { className: 'card-header', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 23
+                        lineNumber: 57
                     },
                     __self: _this
                 },
@@ -32620,7 +32655,7 @@ var TaskCard = function TaskCard(props) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 24
+                            lineNumber: 58
                         },
                         __self: _this
                     },
@@ -32631,7 +32666,7 @@ var TaskCard = function TaskCard(props) {
                 'div',
                 { className: 'card-body', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 28
+                        lineNumber: 62
                     },
                     __self: _this
                 },
@@ -32639,11 +32674,10 @@ var TaskCard = function TaskCard(props) {
                     'h5',
                     { className: 'card-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 29
+                            lineNumber: 63
                         },
                         __self: _this
                     },
-                    'Date:',
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_intl__["a" /* FormattedDate */], {
                         value: date,
                         year: 'numeric',
@@ -32651,7 +32685,7 @@ var TaskCard = function TaskCard(props) {
                         day: '2-digit',
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 30
+                            lineNumber: 64
                         },
                         __self: _this
                     })
@@ -32660,46 +32694,46 @@ var TaskCard = function TaskCard(props) {
                     'p',
                     { className: 'card-text', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 37
+                            lineNumber: 71
                         },
                         __self: _this
                     },
                     task.description
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'text-right text-muted', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 72
+                        },
+                        __self: _this
+                    },
+                    displayDate
                 )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'card-footer text-muted', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 39
+                        lineNumber: 76
                     },
                     __self: _this
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'w-33 text-left', __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 40
-                        },
-                        __self: _this
-                    },
-                    '2 days ago'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
                     { className: 'w-66 text-right', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 43
+                            lineNumber: 77
                         },
                         __self: _this
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { className: 'btn btn-outline-info btn-sm', 'data-toggle': 'modal', 'data-target': '#taskModal', onClick: function onClick() {
+                        { className: 'btn btn-outline-info btn-sm mr-5 text-left', 'data-toggle': 'modal', 'data-target': '#taskModal', onClick: function onClick() {
                                 return props.editTask(task.id);
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 44
+                                lineNumber: 78
                             },
                             __self: _this
                         },
@@ -32711,7 +32745,7 @@ var TaskCard = function TaskCard(props) {
                                 return props.deleteTask(task.id);
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 45
+                                lineNumber: 79
                             },
                             __self: _this
                         },
@@ -32822,7 +32856,7 @@ var TaskIndex = function TaskIndex(props) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'card-deck row mb-3 text-center', __source: {
+            { className: 'card-deck mb-3 text-center', __source: {
                     fileName: _jsxFileName,
                     lineNumber: 35
                 },
@@ -33246,6 +33280,7 @@ var TaskManager = function (_Component) {
                     date: ''
                 }
             });
+            _this.getTasks();
         };
 
         _this.handleEdit = function (id) {
@@ -33296,7 +33331,7 @@ var TaskManager = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 91
+                        lineNumber: 90
                     },
                     __self: this
                 },
@@ -33308,7 +33343,7 @@ var TaskManager = function (_Component) {
                     editTask: this.handleEdit,
                     deleteTask: this.handleDelete, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 92
+                        lineNumber: 91
                     },
                     __self: this
                 })

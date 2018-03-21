@@ -32,9 +32,9 @@ const TaskIndex = props => {
             <div className="row mb-3">
                 <button className="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#taskModal" >Create New Task</button>
             </div>
-                <div className="card-deck row mb-3 text-center">
-                    {rows}
-                </div>
+            <div className="card-deck mb-3 text-center">
+                {rows}
+            </div>
             <TaskModal task={props.task} handleInputChange={props.handleInputChange} submitTask={props.submitTask} />
 
         </div>

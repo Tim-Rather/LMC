@@ -31,8 +31,6 @@ class TaskManager extends Component {
         }, err => console.error(err))
     }
 
-
-
     /***Event Handlers***/
     handleInputChange = e => {
         const target = e.target;
@@ -66,6 +64,7 @@ class TaskManager extends Component {
                 date: ''
             }
         })
+        this.getTasks();
     }
 
     handleEdit = id => {

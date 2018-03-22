@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "947f10be7f47bad60354"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e9f285bab5af473539f5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -32219,7 +32219,8 @@ if(true) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Views_Test__ = __webpack_require__(/*! ./Views/Test */ "./src/Views/Test.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Views_Home__ = __webpack_require__(/*! ./Views/Home */ "./src/Views/Home.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Views_TaskManager__ = __webpack_require__(/*! ./Views/TaskManager */ "./src/Views/TaskManager.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Views_Links__ = __webpack_require__(/*! ./Views/Links */ "./src/Views/Links.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var _jsxFileName = 'C:\\Temp\\lmcproj\\LMCProj\\LMCProj.Web\\app\\public\\src\\App.js',
     _this = this;
 
@@ -32230,13 +32231,14 @@ var _jsxFileName = 'C:\\Temp\\lmcproj\\LMCProj\\LMCProj.Web\\app\\public\\src\\A
 
 
 
+
 var App = function App() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["a" /* BrowserRouter */],
+    __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* BrowserRouter */],
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 10
       },
       __self: _this
     },
@@ -32245,7 +32247,7 @@ var App = function App() {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 11
         },
         __self: _this
       },
@@ -32253,7 +32255,7 @@ var App = function App() {
         'nav',
         { className: 'navbar navbar-expand-lg navbar-dark bg-dark p-2 mb-3', __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 12
           },
           __self: _this
         },
@@ -32261,7 +32263,7 @@ var App = function App() {
           'span',
           { className: 'navbar-brand mb-0 h1', __source: {
               fileName: _jsxFileName,
-              lineNumber: 12
+              lineNumber: 13
             },
             __self: _this
           },
@@ -32271,7 +32273,7 @@ var App = function App() {
           'div',
           { className: 'navbar-nav', __source: {
               fileName: _jsxFileName,
-              lineNumber: 13
+              lineNumber: 14
             },
             __self: _this
           },
@@ -32280,15 +32282,15 @@ var App = function App() {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 14
+                lineNumber: 15
               },
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+              __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
               { className: 'nav-item nav-link', to: '/', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 15
+                  lineNumber: 16
                 },
                 __self: _this
               },
@@ -32300,30 +32302,20 @@ var App = function App() {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 17
+                lineNumber: 18
               },
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+              __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
               { className: 'nav-item nav-link', to: '/taskmanager', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 18
+                  lineNumber: 19
                 },
                 __self: _this
               },
               'Task Manager'
             )
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
-            { className: 'nav-item nav-link', to: '/about', __source: {
-                fileName: _jsxFileName,
-                lineNumber: 20
-              },
-              __self: _this
-            },
-            'About'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
@@ -32335,10 +32327,40 @@ var App = function App() {
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
-              { className: 'nav-item nav-link', to: '/test', __source: {
+              __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+              { className: 'nav-item nav-link', to: '/links', __source: {
                   fileName: _jsxFileName,
                   lineNumber: 22
+                },
+                __self: _this
+              },
+              'Coding Articles'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+            { className: 'nav-item nav-link', to: '/about', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 24
+              },
+              __self: _this
+            },
+            'About'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 25
+              },
+              __self: _this
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+              { className: 'nav-item nav-link', to: '/test', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 26
                 },
                 __self: _this
               },
@@ -32347,27 +32369,33 @@ var App = function App() {
           )
         )
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_2__Views_Home__["a" /* default */], __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_2__Views_Home__["a" /* default */], __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 31
         },
         __self: _this
       }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/taskmanager', component: __WEBPACK_IMPORTED_MODULE_3__Views_TaskManager__["a" /* default */], __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { path: '/taskmanager', component: __WEBPACK_IMPORTED_MODULE_3__Views_TaskManager__["a" /* default */], __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 32
         },
         __self: _this
       }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/about', component: About, __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { path: '/links', component: __WEBPACK_IMPORTED_MODULE_4__Views_Links__["a" /* default */], __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 33
         },
         __self: _this
       }),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/test', component: __WEBPACK_IMPORTED_MODULE_1__Views_Test__["a" /* default */], __source: {
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { path: '/about', component: About, __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 34
+        },
+        __self: _this
+      }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { path: '/test', component: __WEBPACK_IMPORTED_MODULE_1__Views_Test__["a" /* default */], __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
         },
         __self: _this
       })
@@ -32387,7 +32415,7 @@ var About = function About() {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 47
       },
       __self: _this
     },
@@ -32396,7 +32424,7 @@ var About = function About() {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 48
         },
         __self: _this
       },
@@ -32412,7 +32440,7 @@ var Topics = function Topics(_ref) {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 53
       },
       __self: _this
     },
@@ -32421,7 +32449,7 @@ var Topics = function Topics(_ref) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 54
         },
         __self: _this
       },
@@ -32432,7 +32460,7 @@ var Topics = function Topics(_ref) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 55
         },
         __self: _this
       },
@@ -32441,15 +32469,15 @@ var Topics = function Topics(_ref) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 56
           },
           __self: _this
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+          __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
           { to: match.url + '/rendering', __source: {
               fileName: _jsxFileName,
-              lineNumber: 52
+              lineNumber: 57
             },
             __self: _this
           },
@@ -32461,15 +32489,15 @@ var Topics = function Topics(_ref) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 59
           },
           __self: _this
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+          __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
           { to: match.url + '/components', __source: {
               fileName: _jsxFileName,
-              lineNumber: 55
+              lineNumber: 60
             },
             __self: _this
           },
@@ -32481,15 +32509,15 @@ var Topics = function Topics(_ref) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 57
+            lineNumber: 62
           },
           __self: _this
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+          __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
           { to: match.url + '/props-v-state', __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 63
             },
             __self: _this
           },
@@ -32497,13 +32525,13 @@ var Topics = function Topics(_ref) {
         )
       )
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: match.url + '/:topicId', component: Topic, __source: {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], { path: match.url + '/:topicId', component: Topic, __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 67
       },
       __self: _this
     }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], {
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */], {
       exact: true,
       path: match.url,
       render: function render() {
@@ -32512,7 +32540,7 @@ var Topics = function Topics(_ref) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 66
+              lineNumber: 71
             },
             __self: _this
           },
@@ -32521,7 +32549,7 @@ var Topics = function Topics(_ref) {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 68
       },
       __self: _this
     })
@@ -32535,7 +32563,7 @@ var Topic = function Topic(_ref2) {
     {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72
+        lineNumber: 77
       },
       __self: _this
     },
@@ -32544,7 +32572,7 @@ var Topic = function Topic(_ref2) {
       {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 78
         },
         __self: _this
       },
@@ -33199,6 +33227,161 @@ var Home = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Home);
+
+/***/ }),
+
+/***/ "./src/Views/Links.js":
+/*!****************************!*\
+  !*** ./src/Views/Links.js ***!
+  \****************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+var _jsxFileName = 'C:\\Temp\\lmcproj\\LMCProj\\LMCProj.Web\\app\\public\\src\\Views\\Links.js',
+    _this3 = this;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Links = function (_React$Component) {
+    _inherits(Links, _React$Component);
+
+    function Links(props) {
+        _classCallCheck(this, Links);
+
+        var _this = _possibleConstructorReturn(this, (Links.__proto__ || Object.getPrototypeOf(Links)).call(this, props));
+
+        _this.getLinks = function () {
+            var newLinks = [];
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/links').then(function (resp) {
+                console.log(resp);
+                newLinks = resp.data.items;
+                _this.setState({
+                    links: newLinks
+                });
+            }, function (err) {
+                return console.log(err);
+            });
+        };
+
+        _this.state = {
+            links: []
+        };
+        return _this;
+    }
+
+    _createClass(Links, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.getLinks();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var links = this.state.links.map(function (link, index) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(LinkCard, Object.assign({}, link, {
+                    link: link,
+                    key: index,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 31
+                    },
+                    __self: _this2
+                }));
+            });
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'card-deck', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 39
+                    },
+                    __self: this
+                },
+                links
+            );
+        }
+    }]);
+
+    return Links;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var LinkCard = function LinkCard(props) {
+
+    var link = props.link;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'card', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 51
+            },
+            __self: _this3
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'card-img-top', src: link.image, alt: '', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 52
+            },
+            __self: _this3
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'card-body', __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 53
+                },
+                __self: _this3
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'h5',
+                { className: 'card-title', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 54
+                    },
+                    __self: _this3
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'a',
+                    { href: link.url, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 54
+                        },
+                        __self: _this3
+                    },
+                    link.title
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'p',
+                { className: 'card-text', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 55
+                    },
+                    __self: _this3
+                },
+                link.description
+            )
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Links);
 
 /***/ }),
 

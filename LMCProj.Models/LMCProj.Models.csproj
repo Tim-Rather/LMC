@@ -44,6 +44,7 @@
     <Compile Include="Domain\People.cs" />
     <Compile Include="Domain\AccountTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\LinkAddRequest.cs" />
     <Compile Include="Request\PeopleAddRequest.cs" />
     <Compile Include="Request\PeopleUpdateRequest.cs" />
     <Compile Include="Request\TaskAddRequest.cs" />
@@ -53,9 +54,8 @@
     <Compile Include="Response\ItemResponse.cs" />
     <Compile Include="Response\Response.cs" />
     <Compile Include="Response\SuccessResponse.cs" />
+    <Compile Include="View\LinkScrapingViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

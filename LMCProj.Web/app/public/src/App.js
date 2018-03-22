@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Test from './Views/Test';
 import Home from './Views/Home';
 import TaskManager from './Views/TaskManager';
+import Links from './Views/Links';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -17,6 +18,9 @@ const App = () => (
           <li>
             <Link className="nav-item nav-link" to="/taskmanager">Task Manager</Link>
           </li>
+          <li>
+            <Link className="nav-item nav-link" to="/links">Coding Articles</Link>
+          </li>
             <Link className="nav-item nav-link" to="/about">About</Link>
           <li>
             <Link className="nav-item nav-link" to="/test">Test</Link>
@@ -26,6 +30,7 @@ const App = () => (
 
       <Route exact path="/" component={Home} />
       <Route path="/taskmanager" component={TaskManager} />
+      <Route path="/links" component={Links} />
       <Route path="/about" component={About} />
       <Route path="/test" component={Test} />
     </div>

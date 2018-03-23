@@ -29,6 +29,8 @@ namespace LMCProj.Services
             cmd.Parameters.AddWithValue("@LastName", model.LastName);
             cmd.Parameters.AddWithValue("@DOB", model.DOB);
             cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+            cmd.Parameters.AddWithValue("@Description", model.Description);
+            cmd.Parameters.AddWithValue("@Image", model.Image);
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -63,6 +65,8 @@ namespace LMCProj.Services
                 person.CreatedDate = reader.GetDateTime(index++);
                 person.ModifiedDate = reader.GetDateTime(index++);
                 person.ModifiedBy = reader.GetString(index++);
+                person.Description = reader.GetString(index++);
+                person.Image = reader.GetString(index++);
 
                 result.Add(person);
             }
@@ -95,6 +99,8 @@ namespace LMCProj.Services
                 person.CreatedDate = reader.GetDateTime(index++);
                 person.ModifiedDate = reader.GetDateTime(index++);
                 person.ModifiedBy = reader.GetString(index++);
+                person.Description = reader.GetString(index++);
+                person.Image = reader.GetString(index++);
             }
             conn.Close();
             return person;
@@ -110,6 +116,8 @@ namespace LMCProj.Services
             cmd.Parameters.AddWithValue("@LastName", model.LastName);
             cmd.Parameters.AddWithValue("@DOB", model.DOB);
             cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+            cmd.Parameters.AddWithValue("@Description", model.Description);
+            cmd.Parameters.AddWithValue("@Image", model.Image);
 
             conn.Open();
             cmd.ExecuteNonQuery();

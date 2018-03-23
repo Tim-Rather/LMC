@@ -44,7 +44,6 @@
     <Compile Include="Domain\People.cs" />
     <Compile Include="Domain\AccountTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request\LinkAddRequest.cs" />
     <Compile Include="Request\PeopleAddRequest.cs" />
     <Compile Include="Request\PeopleUpdateRequest.cs" />
     <Compile Include="Request\TaskAddRequest.cs" />

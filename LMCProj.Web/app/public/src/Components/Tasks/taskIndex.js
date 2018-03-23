@@ -16,6 +16,7 @@ const TaskIndex = props => {
 
     let rows = props.tasks.map(task => 
         <TaskCard  
+            colSize={"col-md-4"}  
             task={task}
             {...task}
             key={task.id}
@@ -25,7 +26,7 @@ const TaskIndex = props => {
     );
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div className="row mb-2">
                 <h3 className="mx-auto font-weight-bold">Your Tasks</h3>
             </div>

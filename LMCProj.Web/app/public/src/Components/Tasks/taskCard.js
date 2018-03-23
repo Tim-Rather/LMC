@@ -1,5 +1,7 @@
 import React from 'react';
 import {FormattedDate, FormattedTime} from 'react-intl';
+import '../../index.css';
+
 
 /*
 ***** PROPS *****
@@ -14,29 +16,37 @@ deleteTask - function - function to delete task, receives id as parameter
 const TaskCard = props => {
 
     let task = props.task;
-    let date = props.date.substring(0, 10);
-    let time = props.date.substring(11, 22);
-
+    
     let currentDate = Date.now();
     let UTCDiff = new Date().getTimezoneOffset();
     //converting UTCDiff to milliseconds
     UTCDiff = UTCDiff*60000;
-    console.log(UTCDiff);
-    let currentUTCDate = currentDate + UTCDiff;
+    // console.log(UTCDiff);
+    
+    let taskDate = Date.parse(props.date) - UTCDiff;
+    let taskDateFormat = new Date(taskDate)
+    
+    let date = taskDateFormat
+    // console.log(taskDateFormat);
+    let timeToTask = taskDate - currentDate;
+    
 
-    let taskDate = Date.parse(props.date);
-    let timeToTask = taskDate - currentUTCDate;
     let weeksToTask = Math.floor(timeToTask/(1000*60*60*24*7));
     let daysToTask = Math.floor(timeToTask/(1000*60*60*24));
     let hoursToTask = Math.floor(timeToTask/(1000*60*60));
     let displayDate = 0;
     if (weeksToTask >= 1) {
-        displayDate = "In " + weeksToTask + " weeks"
+        if (weeksToTask === 1) {
+            displayDate = "In " + weeksToTask + " week"
+        }
+        else {
+            displayDate = "In " + weeksToTask + " weeks"
+        }
     } else if (daysToTask <= 6 && daysToTask >= 1) {
         if (daysToTask === 1) {
             displayDate = "In " + daysToTask + " day"
         } else{
-            displayDate = "In " + daysToTask + " days"
+            displayDate = "In " + daysToTask + " days " + (hoursToTask - (daysToTask*24)) + " hours"
         }
     } else if (hoursToTask <= 23) {
         displayDate = "In " + hoursToTask + " hours"
@@ -52,8 +62,8 @@ const TaskCard = props => {
 
 
     return (
-        <div className="col-md-4">
-            <div className="card mb-3 h-99 box-shadow">
+        <div className={props.colSize}>
+            <div className="card mb-3 h-99 shadow-box">
                 <div className="card-header">
                     <h5 >
                         {task.title}
@@ -73,12 +83,17 @@ const TaskCard = props => {
                         {displayDate}
                     </div>
                 </div>
+                {props.editTask ? 
                 <div className="card-footer">
                     <div className="w-100">
                         <button className="btn btn-outline-info btn-sm mr-5 text-left" data-toggle="modal" data-target="#taskModal" onClick={() => props.editTask(task.id)}>Edit Task</button>
                         <button className="btn btn-outline-danger btn-sm ml-5 text-right" onClick={() => props.deleteTask(task.id)}>Delete Task</button>
                     </div>
                 </div>
+                :
+                <div></div>
+                }
+                
             </div>
         </div>
     );

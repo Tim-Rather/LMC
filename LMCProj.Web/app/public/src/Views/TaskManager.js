@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import TaskIndex from '../Components/Tasks/taskIndex';
 import axios from 'axios';
+import { DotLoader } from 'react-spinners';
 
 class TaskManager extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            loading: true,
             taskList: [],
             task: {
                 title: '',
@@ -20,13 +22,13 @@ class TaskManager extends Component {
     }
 
     getTasks = () => {
-        let tasks = [];
         axios.get('/api/tasks/getbyid/2')
         .then(resp => {
             console.log(resp);
             console.log(resp.data.items);
             this.setState({
-                taskList: resp.data.items
+                taskList: resp.data.items,
+                loading: false
             })
         }, err => console.error(err))
     }
@@ -45,11 +47,10 @@ class TaskManager extends Component {
     }
 
     handleSubmit = () => {
-        let newTaskList = this.state.taskList;
         let task = this.state.task;
-        let date = new Date(task.date).toISOString()
+        let date = new Date(task.date).toISOString();
         task.date = date;
-        console.log(task.date);
+        // console.log(task.date);
         task.accountId = 2;
         if (task.id == undefined) {
             return axios.post('/api/tasks', task)
@@ -77,6 +78,17 @@ class TaskManager extends Component {
         let tasks = this.state.taskList;
         let index = tasks.findIndex(task => task.id == id);
         let editTask = tasks[index];
+        let dateMil = Date.parse(editTask.date);
+        let UTCDiff = new Date().getTimezoneOffset();
+        //converting UTCDiff to milliseconds
+        UTCDiff = UTCDiff*60000;
+
+        let convertedDateMil = dateMil - (UTCDiff*2);
+        console.log(convertedDateMil);
+
+        let convertedDate = new Date(convertedDateMil).toISOString();
+        console.log(convertedDate);
+        editTask.date = convertedDate.substring(0, convertedDate.length-2)
 
         this.setState({
             task: editTask
@@ -96,6 +108,18 @@ class TaskManager extends Component {
     render() {
         return (
             <div>
+                {this.state.loading ?
+                <div className="sweet-loading container h-100 mt-5 pt-5">
+                    <div className="row h-100 mt-5 pt-5 justify-content-center align-items-center">
+                        <DotLoader
+                            className="mt-5 pt-5"
+                            size={100}
+                            color={'#17a2b8'} 
+                            loading={this.state.loading} 
+                        />
+                    </div>
+                </div>
+                :
                 <TaskIndex 
                     tasks={this.state.taskList} 
                     task={this.state.task} 
@@ -103,6 +127,7 @@ class TaskManager extends Component {
                     handleInputChange={this.handleInputChange} 
                     editTask={this.handleEdit} 
                     deleteTask={this.handleDelete}/>
+                }
             </div>
         );
     }

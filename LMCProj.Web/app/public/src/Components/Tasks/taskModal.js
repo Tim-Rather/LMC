@@ -1,4 +1,6 @@
 import React from 'react';
+import { $ } from 'jquery';
+
 /* 
 ***** PROPS *****
 handleInputChange - function - binds event to function and passes it in as param

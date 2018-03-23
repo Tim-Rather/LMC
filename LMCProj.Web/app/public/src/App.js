@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import Test from './Views/Test';
-import Home from './Views/Home';
+import Profile from './Views/Profile';
 import TaskManager from './Views/TaskManager';
 import Links from './Views/Links';
+import Home from './Views/Home';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const App = () => (
   <Router>
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2 mb-3">
+      <nav id="navigationBar" className="navbar navbar-expand-lg navbar-dark bg-dark p-2 mb-3">
         <span className="navbar-brand mb-0 h1">LMC</span>
         <div className="navbar-nav">
           <li>
             <Link className="nav-item nav-link" to="/">Home</Link>
+          </li>
+          <li>
+            <Link className="nav-item nav-link" to="/profile">Profile</Link>
           </li>
           <li>
             <Link className="nav-item nav-link" to="/taskmanager">Task Manager</Link>
@@ -25,10 +29,12 @@ const App = () => (
           <li>
             <Link className="nav-item nav-link" to="/test">Test</Link>
           </li>
+          
         </div>
       </nav>
 
       <Route exact path="/" component={Home} />
+      <Route path="/profile" component={Profile} />
       <Route path="/taskmanager" component={TaskManager} />
       <Route path="/links" component={Links} />
       <Route path="/about" component={About} />

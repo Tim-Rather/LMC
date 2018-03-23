@@ -23,8 +23,7 @@ namespace LMCProj.Web.Controllers.API
         {
             ItemListResponse<LinkScrapingViewModel> resp = new ItemListResponse<LinkScrapingViewModel>();
             HtmlWeb browser = new HtmlWeb();
-            //Browser.AllowAutoRedirect = true; // Browser has settings you can access in setup
-            //Browser.AllowMetaRedirect = true;
+
             HtmlDocument PageResult = browser.Load("https://codeburst.io/");
 
             List<LinkScrapingViewModel> list = new List<LinkScrapingViewModel>();
@@ -83,12 +82,8 @@ namespace LMCProj.Web.Controllers.API
 
         // POST api/<controller>
         [Route, HttpPost]
-        public HttpResponseMessage Post([FromBody]LinkAddRequest model)
+        public HttpResponseMessage Post([FromBody] int id)
         {
-            HtmlWeb site = new HtmlWeb();
-            HtmlDocument doc = site.Load(model.Url);
-            //HtmlNode[] node = doc.DocumentNode.I
-
             return Request.CreateResponse(HttpStatusCode.OK, "scraped");
         }
 
